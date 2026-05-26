@@ -9,18 +9,18 @@ struct Student {
 
 int main() {
     Student roster[5] = {
-        {"Alice", 101, 3.5},
-        {"Bob", 102, 3.2},
-        {"Charlie", 103, 3.9},
-        {"David", 104, 2.8},
-        {"Eva", 105, 3.7}
+        {"Abidzar", 01, 3.5},
+        {"Budi", 02, 3.2},
+        {"Kaizer", 03, 3.9},
+        {"Albany", 04, 2.8},
+        {"Fathul", 05, 3.7}
     };
 
     std::cout << "--- Student Roster ---" << std::endl;
     for (int i = 0; i < 5; i++) {
         std::cout << "Nama: " << roster[i].name
                   << " | ID: " << roster[i].id
-                  << " | GPA: " << roster[i].gpa << std::endl;
+                  << " | IPK: " << roster[i].gpa << std::endl;
     }
     return 0;
 }

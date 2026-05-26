@@ -12,13 +12,13 @@ void updateGPA(Student& s, double newGpa) {
 }
 
 int main() {
-    Student bob = {"Bob", 102, 3.2};
+    Student bob = {"Abidzar", 01, 3.5};
     
-    std::cout << "GPA Bob awal : " << bob.gpa << std::endl;
+    std::cout << "IPK Abidzar awal : " << bob.gpa << std::endl;
     
-    updateGPA(bob, 3.6);
+    updateGPA(bob, 3.8);
     
-    std::cout << "GPA Bob baru : " << bob.gpa << " (Terbukti Berubah!)" << std::endl;
+    std::cout << "IPK Abidzar baru : " << bob.gpa << "(Berubah)" << std::endl;
     
     return 0;
 }

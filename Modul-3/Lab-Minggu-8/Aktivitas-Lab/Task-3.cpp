@@ -19,15 +19,15 @@ Student findHighestGPA(Student arr[], int size) {
 
 int main() {
     Student roster[5] = {
-        {"Alice", 101, 3.5},
-        {"Bob", 102, 3.6},
-        {"Charlie", 103, 3.9},
-        {"David", 104, 2.8},
-        {"Eva", 105, 3.7}
+        {"Abidzar", 1, 3.5},
+        {"Beni", 2, 3.6},
+        {"Kaizer", 3, 3.9},
+        {"Fathul", 4, 2.8},
+        {"Esan", 5, 3.7}
     };
 
     Student topStudent = findHighestGPA(roster, 5);
-    std::cout << "Siswa dengan GPA tertinggi adalah: " 
+    std::cout << "Siswa dengan IPK tertinggi adalah: "
               << topStudent.name << " dengan nilai " << topStudent.gpa << std::endl;
 
     return 0;

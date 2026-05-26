@@ -7,7 +7,6 @@
 int main() {
     int sizes[] = {100, 1000, 10000, 100000};
     std::cout << "Ukuran Larik\tInsertion Sort (ms)\tMerge Sort (ms)\n";
-    std::cout << "---------------------------------------------------------\n";
 
     for (int size : sizes) {
         std::vector<int> base(size), arr;
@@ -18,13 +17,13 @@ int main() {
             arr = base;
             auto start = std::chrono::high_resolution_clock::now();
             auto end = std::chrono::high_resolution_clock::now();
-            tInsertion = std::chrono::duration<double, std::milli>(end - start).count();
+            tInsertion = std::chrono::duration<double, std::nano>(end - start).count();
         }
 
         arr = base;
         auto start = std::chrono::high_resolution_clock::now();
         auto end = std::chrono::high_resolution_clock::now();
-        double tMerge = std::chrono::duration<double, std::milli>(end - start).count();
+        double tMerge = std::chrono::duration<double, std::nano>(end - start).count();
 
         std::cout << size << "\t\t";
         if (size > 10000) std::cout << "Skipped (>10s)\t\t";

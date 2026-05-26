@@ -46,7 +46,7 @@ public:
 
 int main() {
     Fraction f1(1, 2);
-    Fraction f2(2, 3);
+    Fraction f2(2, 6);
 
     std::cout << "Fraction 1: "; f1.print();
     std::cout << "Fraction 2: "; f2.print();

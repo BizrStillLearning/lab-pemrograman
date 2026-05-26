@@ -10,14 +10,16 @@ struct Student {
 
 int main() {
     std::vector<Student> roster = {
-        {105, "Eva"}, {101, "Alice"}, {103, "Charlie"}, {102, "Bob"}
+        {5, "Erlan"}, {1, "Abidzar"}, {3, "Kaizer"}, {2, "ALbany"}
     };
 
     std::sort(roster.begin(), roster.end(), [](const Student& a, const Student& b) {
         return a.id < b.id;
     });
 
-    int targetId = 103;
+    int targetId;
+    std::cout << "Masukkan ID yang dicari: ";
+    std::cin >> targetId;
 
     auto it = std::lower_bound(roster.begin(), roster.end(), Student{targetId, ""},
         [](const Student& a, const Student& b) {

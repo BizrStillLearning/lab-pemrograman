@@ -9,7 +9,6 @@ struct Product {
 
 void displayInventory(Product arr[], int n) {
     double totalValue = 0;
-    std::cout << "\n--- INVENTORY LIST ---" << std::endl;
     for (int i = 0; i < n; i++) {
         double productValue = arr[i].price * arr[i].quantity;
         totalValue += productValue;
@@ -17,7 +16,6 @@ void displayInventory(Product arr[], int n) {
                   << " | Qty: " << arr[i].quantity 
                   << " | Total: $" << productValue << std::endl;
     }
-    std::cout << "-----------------------------------" << std::endl;
     std::cout << "Total Inventory Value: $" << totalValue << std::endl;
 }
 

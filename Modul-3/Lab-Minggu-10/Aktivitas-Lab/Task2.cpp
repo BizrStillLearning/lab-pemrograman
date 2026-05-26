@@ -9,9 +9,9 @@ int recursiveBinarySearch(const std::vector<int>& arr, int low, int high, int ta
     if (arr[mid] == target) return mid;
 
     if (arr[mid] < target) {
-        return recursiveBinarySearch(arr, mid + 1, high, target); // Cari di kanan
+        return recursiveBinarySearch(arr, mid + 1, high, target);
     } else {
-        return recursiveBinarySearch(arr, low, mid - 1, target); // Cari di kiri
+        return recursiveBinarySearch(arr, low, mid - 1, target);
     }
 }
 
