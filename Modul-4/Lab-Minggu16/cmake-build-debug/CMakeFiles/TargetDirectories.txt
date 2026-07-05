@@ -1,0 +1,3 @@
+C:/Users/AbidzarDzakwanSahudi/CLionProjects/kuliah/lab-pemrograman/Modul-4/Lab-Minggu16/cmake-build-debug/CMakeFiles/Lab-Minggu16.dir
+C:/Users/AbidzarDzakwanSahudi/CLionProjects/kuliah/lab-pemrograman/Modul-4/Lab-Minggu16/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/AbidzarDzakwanSahudi/CLionProjects/kuliah/lab-pemrograman/Modul-4/Lab-Minggu16/cmake-build-debug/CMakeFiles/rebuild_cache.dir
