@@ -42,6 +42,12 @@ void Database::loadFromCSV(const std::string& filename) {
             records.push_back(new Kota(code, name, prov, pop, area, hdi, pov));
         }
     }
+
+    if (records.empty()) {
+        std::cout << "[ERROR] Gagal memuat data! File CSV tidak ditemukan atau kosong.\n";
+    } else {
+        std::cout << "[SUKSES] Berhasil memuat " << records.size() << " data region.\n";
+    }
 }
 
 void Database::listAll() const {
@@ -86,5 +92,71 @@ void Database::showTopKHDI(int K, const std::string& targetProvince) {
     
     std::cout << "\n--- Top " << K << " HDI di " << targetProvince << " ---\n";
     for (int i = topRegions.size() - 1; i >= 0; i--) topRegions[i]->displayInfo();
+}
+
+void Database::searchByName(const std::string& query) const {
+    bool found = false;
+    std::cout << "\n--- Hasil Pencarian: " << query << " ---\n";
+    for (Region* r : records) {
+        if (r->getName().find(query) != std::string::npos) {
+            r->displayInfo();
+            found = true;
+        }
+    }
+    if (!found) std::cout << "Region tidak ditemukan.\n";
+}
+
+void Database::filterByProvince(const std::string& prov) const {
+    bool found = false;
+    std::cout << "\n--- Data Provinsi: " << prov << " ---\n";
+    for (Region* r : records) {
+        Kabupaten* kab = dynamic_cast<Kabupaten*>(r);
+        Kota* kota = dynamic_cast<Kota*>(r);
+        std::string p = kab ? kab->getProvince() : (kota ? kota->getProvince() : "");
+
+        if (p == prov) {
+            r->displayInfo();
+            found = true;
+        }
+    }
+    if (!found) std::cout << "Tidak ada data untuk provinsi tersebut.\n";
+}
+
+void Database::sortData() {
+    std::sort(records.begin(), records.end(), [](Region* a, Region* b) {
+        return a->getName() < b->getName();
+    });
+    std::cout << "Data berhasil diurutkan berdasarkan Nama (A-Z).\n";
+}
+
+void Database::calculateAverageDensity(const std::string& prov) const {
+    double totalDensity = 0;
+    int count = 0;
+
+    for (Region* r : records) {
+        Kabupaten* kab = dynamic_cast<Kabupaten*>(r);
+        Kota* kota = dynamic_cast<Kota*>(r);
+        std::string p = kab ? kab->getProvince() : (kota ? kota->getProvince() : "");
+
+        if (p == prov) {
+            totalDensity += r->getDensity();
+            count++;
+        }
+    }
+
+    if (count > 0) {
+        std::cout << "\nRata-rata kepadatan penduduk di " << prov
+                  << " adalah " << (totalDensity / count) << " jiwa/km2 dari "
+                  << count << " region.\n";
+    } else {
+        std::cout << "Tidak ada data untuk provinsi tersebut.\n";
+    }
+}
+
+void Database::sortByPovertyRate() {
+    std::sort(records.begin(), records.end(), [](Region* a, Region* b) {
+        return a->getPovertyRate() < b->getPovertyRate();
+    });
+    std::cout << "\nData berhasil diurutkan berdasarkan Tingkat Kemiskinan Terendah.\n";
 }
 

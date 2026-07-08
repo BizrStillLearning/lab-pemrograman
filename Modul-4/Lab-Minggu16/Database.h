@@ -20,5 +20,8 @@ public:
     void sortByCode();
     Region* binarySearchByCode(int targetCode);
     void showTopKHDI(int K, const std::string& targetProvince);
+
+    void calculateAverageDensity(const std::string& prov) const;
+    void sortByPovertyRate();
 };
 #endif
