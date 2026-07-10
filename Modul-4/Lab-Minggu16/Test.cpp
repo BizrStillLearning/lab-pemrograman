@@ -1,26 +1,23 @@
-// Latihan 4: Breadth-First Search (BFS) pada Graph (Modul 4)
 #include <iostream>
 #include <vector>
 #include <queue>
 
 using namespace std;
 
-// BFS menjamin penelusuran per lapis (level-order) [17, 18]
 void bfs(const vector<vector<int>>& adj, int start) {
     int N = adj.size();
     vector<bool> visited(N, false);
-    queue<int> q; // BFS memakai Queue [18]
+    queue<int> q;
 
     visited[start] = true;
-    q.push(start); // 1. Init Queue [19]
+    q.push(start);
 
-    cout << "Jejak BFS: ";
+    cout << "Jejak BFS dari Vertex " << start << ": ";
     while (!q.empty()) {
-        int u = q.front(); 
-        q.pop(); // 2. Pop & Visit [20]
+        int u = q.front();
+        q.pop();
         cout << u << " ";
 
-        // 3 & 4. Cek Neighbors & Enqueue baru [21, 22]
         for (int v : adj[u]) {
             if (!visited[v]) {
                 visited[v] = true;
@@ -32,21 +29,30 @@ void bfs(const vector<vector<int>>& adj, int start) {
 }
 
 int main() {
-    int N = 4; // Representasi Adjacency List untuk graf dengan 4 vertex [23]
+    int N = 5;
+
     vector<vector<int>> adj(N);
 
     auto addEdge = [&](int u, int v) {
         adj[u].push_back(v);
-        adj[v].push_back(u); // Undirected graph [23]
+        adj[v].push_back(u);
     };
 
     addEdge(0, 1);
     addEdge(0, 2);
-    addEdge(1, 2);
     addEdge(1, 3);
-    addEdge(2, 3);
+    addEdge(2, 4);
+    addEdge(3, 4);
 
-    bfs(adj, 0); // Mulai traversal dari vertex 0
+    for (int u = 0; u < N; u++) {
+        cout << "List Vertex " << u << " terhubung dengan: ";
+        for (int v : adj[u]) {
+            cout << v << " ";
+        }
+        cout << "\n";
+    }
+
+    bfs(adj, 0);
 
     return 0;
 }
